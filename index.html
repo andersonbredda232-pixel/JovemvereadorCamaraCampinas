@@ -471,8 +471,8 @@ function vMenu(){return `<div class="hub"><div class="hl"><span class="rb">Câma
 ${msb('Você ganhou um mandato! Leve o seu projeto de lei do Protocolo até a sanção do Prefeito.','h')}
 <div class="card how"><b>Como se joga</b><ul><li>Responda às perguntas sobre o Regimento Interno para avançar as casas.</li><li>Erros custam vidas, apoio e meses de mandato.</li><li>Casas ❗ trazem eventos. Casas 🃏 trazem cartas de sorte ou revés.</li></ul></div></div>
 <form class="card fm" id="fm" novalidate><h2 class="t">Seu gabinete</h2>
-<div><span class="lb">Como quer ser chamado(a)?</span><div class="sg"><button type="button" data-a="trat" data-v="a" class="${G.trat=='a'?'on':''}" aria-pressed="${G.trat=='a'}">Vereadora</button><button type="button" data-a="trat" data-v="o" class="${G.trat=='o'?'on':''}" aria-pressed="${G.trat=='o'}">Vereador</button></div></div>
-<div><label class="lb" for="nome">Seu nome</label><input id="nome" maxlength="40" autocomplete="off" placeholder="Ex.: Ana Souza" value="${esc(G.nome)}"></div>
+<div><span class="lb">Qual será seu nome parlamentar?</span><div class="sg"><button type="button" data-a="trat" data-v="a" class="${G.trat=='a'?'on':''}" aria-pressed="${G.trat=='a'}">Vereadora</button><button type="button" data-a="trat" data-v="o" class="${G.trat=='o'?'on':''}" aria-pressed="${G.trat=='o'}">Vereador</button></div></div>
+<div><label class="lb" for="nome">Seu nome</label><input id="nome" maxlength="40" autocomplete="off" placeholder="Ex.: Bruna Rafaela" value="${esc(G.nome)}"></div>
 <div><label class="lb" for="proj">Seu projeto de lei</label><textarea id="proj" maxlength="90" rows="2" placeholder="Ex.: Institui a Semana Municipal da Leitura nas escolas">${esc(G.proj)}</textarea></div>
 <div class="ex"><span>Sem ideia? Toque em um exemplo:</span>${EXEMPLOS.map((x,i)=>`<button type="button" data-a="exemplo" data-v="${i}">${x}</button>`).join('')}</div>
 <p class="er" role="alert">${G.err||''}</p>
