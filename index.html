@@ -343,8 +343,8 @@ const EVENTOS=[
 
 /* Cartas de Sorte ou Revés. fx = efeitos; extra = responde pergunta jurídica extra */
 const CARTAS=[
-{bom:1,ic:'✅',nome:'Parecer favorável',txt:'O relator elogiou o projeto. Avance 2 casas.',fx:{casa:2}},
-{bom:1,ic:'🎉',nome:'Apoio popular',txt:'Moradores lotaram as galerias em apoio ao projeto.',fx:{pop:20}},
+{bom:1,ic:'✅',nome:'Parecer favorável',txt:'O relator elogiou seu projeto. Avance 2 casas.',fx:{casa:2}},
+{bom:1,ic:'🎉',nome:'Apoio popular',txt:'Moradores lotaram o plenário em apoio ao projeto.',fx:{pop:20}},
 {bom:1,ic:'🤝',nome:'Apoio da bancada',txt:'Sua bancada fechou questão a favor do projeto.',fx:{pol:15}},
 {bom:1,ic:'❤️',nome:'Assessoria reforçada',txt:'Sua equipe revisou tudo com cuidado. Ganhe 1 vida.',fx:{vida:1}},
 {bom:1,ic:'⏩',nome:'Pauta livre',txt:'A pauta andou rápido nesta semana. Ganhe 3 meses de mandato.',fx:{mes:3}},
@@ -356,7 +356,7 @@ const CARTAS=[
 ];
 
 /* Cargos por XP da partida: [XP mínimo, nome no masculino, nome no feminino] */
-const CARGOS=[[0,'Assessor Legislativo','Assessora Legislativa'],[50,'Vereador','Vereadora'],[150,'Presidente de Comissão','Presidente de Comissão'],[300,'Líder de Bancada','Líder de Bancada'],[500,'Presidente da Câmara','Presidente da Câmara'],[750,'Mestre do Processo Legislativo','Mestra do Processo Legislativo']];
+const CARGOS=[[0,'Vereador Iniciante','Vereadora Iniciante'],[50,'Vereador Experiente','Vereadora Experiente'],[150,'Presidente de Comissão','Presidente de Comissão'],[300,'Líder de Bancada','Líder de Bancada'],[500,'Presidente da Câmara','Presidente da Câmara'],[750,'Mestre do Processo Legislativo','Mestra do Processo Legislativo']];
 
 /* Regras gerais */
 const REGRAS={vidas:5,meses:48,custoPergunta:2,leg:50,pop:50,pol:50,consultas:3,custoConsulta:1,xpPergunta:10,xpEvento:15};
@@ -467,7 +467,7 @@ function fimDeJogo(win,motivo){G.tela='fim';G.win=win;G.motivo=motivo||null;G.no
   beep(win?880:120,win?.3:.4);render()}
 
 /* ---------- telas ---------- */
-function vMenu(){return `<div class="hub"><div class="hl"><span class="rb">Câmara Municipal de Campinas</span><h1 class="t" style="font-size:clamp(30px,4vw,48px)">JOGO JOVEM<br>PARLAMENTAR</h1>
+function vMenu(){return `<div class="hub"><div class="hl"><span class="rb">Câmara Municipal de Campinas</span><h1 class="t" style="font-size:clamp(30px,4vw,48px)">JOGO<br>JOVEM PARLAMENTAR</h1>
 ${msb('Você ganhou um mandato! Leve o seu projeto de lei do Protocolo até a sanção do Prefeito.','h')}
 <div class="card how"><b>Como se joga</b><ul><li>Responda às perguntas sobre o Regimento Interno para avançar as casas.</li><li>Erros custam vidas, apoio e meses de mandato.</li><li>Casas ❗ trazem eventos. Casas 🃏 trazem cartas de sorte ou revés.</li></ul></div></div>
 <form class="card fm" id="fm" novalidate><h2 class="t">Seu gabinete</h2>
