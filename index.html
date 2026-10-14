@@ -11,6 +11,131 @@
     4. <script>  MOTOR DO JOGO: regras, telas e botões
     5. <script>  IMAGENS embutidas (logo e mascote) - não editar
 -->
+<!--
+========================================================================
+CABEÇALHO GERAL DO PROJETO
+========================================================================
+OBJETIVO DO JOGO
+  Ensinar, de forma lúdica, o caminho que um projeto de lei percorre na
+  Câmara Municipal de Campinas até ser sancionado pelo Prefeito. O jogador
+  assume o papel de vereador(a), dá um título ao seu projeto e precisa
+  levá-lo do Protocolo à Sanção respondendo a perguntas sobre as regras
+  reais da tramitação.
+
+PÚBLICO-ALVO
+  Estudantes, visitantes do Memorial da Câmara e qualquer pessoa
+  interessada em entender como nasce uma lei municipal. Não exige
+  conhecimento prévio: cada resposta vem acompanhada de explicação e da
+  fonte legal.
+
+APLICAÇÃO EDUCACIONAL
+  Visitas guiadas, totens do Memorial, aulas e oficinas sobre cidadania e
+  sobre o Poder Legislativo. Uma partida dura cerca de 10 a 15 minutos. Ao
+  final, o jogo lista as perguntas erradas, com a resposta certa e a fonte,
+  para revisão.
+
+BASE LEGAL UTILIZADA
+  RI  = Regimento Interno da Câmara Municipal de Campinas (Resolução
+        nº 842/2009, texto compilado até a Resolução nº 1.028/2025).
+  LOM = Lei Orgânica do Município de Campinas.
+  Cada pergunta cita o artigo de onde foi tirada (último campo da pergunta).
+
+ESTRUTURA GERAL DO SISTEMA
+  Página única feita com HTML, CSS e JavaScript puros: não usa servidor,
+  banco de dados nem inteligência artificial para funcionar.
+    1. ESTILOS (CSS, dentro de <head>): aparência de todas as telas.
+    2. HTML MÍNIMO (<body>): cabeçalho com o logo e a área #app, onde o
+       jogo é desenhado.
+    3. CONTEÚDO (1º <script>): listas com etapas, casas, perguntas,
+       eventos, cartas, cargos e regras. É a única parte que precisa ser
+       editada para mudar o conteúdo do jogo.
+    4. MOTOR (2º <script>): funções que aplicam as regras, guardam o
+       estado da partida e desenham as telas.
+    5. IMAGENS (3º <script>): logo e mascote convertidos em texto (base64).
+
+FLUXO DO JOGO
+  MENU
+    O jogador escolhe Vereadora ou Vereador e digita nome e projeto.
+   ↓
+  Criação do Projeto
+    O jogo cria a partida: projeto de lei com número fictício, 5 vidas,
+    48 meses de mandato e as barras de apoio pela metade.
+   ↓
+  Tramitação Legislativa
+    7 etapas e 21 casas: Protocolo, Procuradoria, Constituição e
+    Legalidade, Comissões Temáticas, Finanças e Orçamento, Plenário e
+    Prefeitura. Cada etapa começa com uma explicação do mascote.
+   ↓
+  Perguntas
+    Duas casas por etapa. Acertar avança; errar custa uma vida.
+   ↓
+  Eventos
+    Três casas, ao longo do percurso, sorteiam um imprevisto com pergunta
+    (oposição, imprensa, audiência pública, pedido de vista, emenda...).
+   ↓
+  Cartas
+    Quatro casas sorteiam uma carta de sorte ou revés, com efeito imediato.
+   ↓
+  Votação
+    Etapa Plenário: 1ª discussão (legalidade) e 2ª discussão (mérito).
+   ↓
+  Prefeitura
+    Autógrafo enviado ao Prefeito, que sanciona ou veta.
+   ↓
+  Sanção
+    Vitória: certificado da lei municipal. Em qualquer momento, a partida
+    termina em derrota se as vidas, a legalidade, o apoio político ou o
+    mandato chegarem a zero.
+========================================================================
+-->
+<!--
+========================================================================
+MODELO CONCEITUAL DO JOGO
+========================================================================
+GAMIFICAÇÃO
+  O jogo usa elementos de jogos (pontos, cargos que funcionam como níveis,
+  vidas, barras de recursos, sorte e revés, recompensa imediata) para
+  motivar o estudo de um conteúdo considerado técnico. O multiplicador de
+  acertos seguidos premia a constância, e a subida de cargo dá sensação de
+  progresso a cada etapa.
+
+APRENDIZAGEM BASEADA EM PROBLEMAS
+  O jogador não assiste a uma aula antes de jogar: recebe um problema
+  concreto (aprovar o próprio projeto) e enfrenta situações que surgem no
+  caminho, como um colega que pede vista, a Procuradoria que aponta um
+  problema de iniciativa ou a imprensa que pede entrevista. O erro faz
+  parte do aprendizado: toda resposta errada mostra a explicação e o
+  artigo correspondente.
+
+EDUCAÇÃO PARA A CIDADANIA
+  O jogo mostra que a lei municipal nasce de um processo com etapas,
+  controles e participação. A população aparece na iniciativa popular, nas
+  audiências públicas e no apoio popular; a imprensa e a oposição aparecem
+  como parte normal da vida democrática.
+
+ENSINO DO PROCESSO LEGISLATIVO
+  O tabuleiro segue a ordem da tramitação: protocolo e admissibilidade
+  (RI, arts. 125 a 128); assessoramento jurídico (LOM, art. 59); Comissão
+  de Constituição e Legalidade (RI, art. 40); comissões de mérito (RI,
+  arts. 39 e 42 a 56-E); Comissão de Finanças e Orçamento (RI, art. 41);
+  duas discussões no Plenário (RI, art. 160); autógrafo (RI, art. 159);
+  sanção ou veto do Prefeito (LOM, arts. 50 e 51).
+
+RELAÇÃO COM O REGIMENTO INTERNO E A LEI ORGÂNICA
+  As regras do jogo simplificam regras reais. Exemplos:
+    - o parecer pela inconstitucionalidade leva o projeto ao arquivo (RI,
+      art. 170, § 1º); no jogo, legalidade zero arquiva o projeto;
+    - a legislatura dura quatro anos (LOM, art. 6º, § 1º); no jogo, o
+      mandato tem 48 meses;
+    - o pedido de vista atrasa a tramitação (RI, arts. 77 e 166); no jogo,
+      custa meses ou faz voltar uma casa;
+    - a Procuradoria presta assessoramento técnico-jurídico (LOM, art. 59);
+      no jogo, a consulta à Procuradoria elimina alternativas erradas.
+  Simplificação assumida: um projeto real nem sempre passa por todas as
+  comissões e não depende de perguntas, mas a ordem das etapas e as regras
+  citadas nas perguntas são as do texto legal.
+========================================================================
+-->
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8">
@@ -18,6 +143,22 @@
     <title>Jovem Parlamentar</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;700&display=swap">
     <style>
+      /*
+      ========================================================================
+      ESTILOS (CSS)
+      ========================================================================
+      O que faz: define a aparência de todas as telas: cores, fontes, tamanhos,
+      posições e animações.
+      Como funciona: as cores e medidas ficam em variáveis no bloco :root (por
+      exemplo, --a é o amarelo do mascote) e o restante do CSS usa essas
+      variáveis. O layout é feito primeiro para celular e, a partir de 860 px de
+      largura, ganha duas colunas (bloco @media no fim dos estilos).
+      Por que existe: separar a aparência da lógica permite mudar o visual sem
+      tocar nas regras do jogo.
+      Como interage: o MOTOR gera o HTML das telas com nomes de classe (por
+      exemplo, "card", "cs aqui", "okb"); cada classe tem aqui a sua aparência.
+      ========================================================================
+      */
       /* ---------- base: medidas da página ---------- */
       :root {
         box-sizing: border-box;
@@ -1183,10 +1324,144 @@
    compilado até a Resolução nº 1.028/2025) = "RI"; Lei Orgânica do Município = "LOM".
    Pergunta: [enunciado, CERTA, errada, errada, errada, explicação, fonte]            */
 
+/*
+========================================================================
+DOCUMENTAÇÃO PARA MANUTENÇÃO FUTURA
+========================================================================
+Todo o conteúdo do jogo está nas listas abaixo. Para mudar o conteúdo NÃO é
+preciso alterar o MOTOR (o segundo bloco <script>).
+
+COMO ADICIONAR UMA PERGUNTA
+  1. Procure a etapa em const Q (protocolo, procuradoria, ccl, tematicas,
+     financas, plenario ou prefeitura).
+  2. Copie uma linha inteira de pergunta e cole logo abaixo da linha
+     "nome_da_etapa:[".
+  3. Troque os sete textos: enunciado, resposta CERTA, três erradas,
+     explicação e fonte. A certa é SEMPRE o segundo texto.
+  4. Cada texto fica entre aspas duplas, separado por vírgula, e a linha
+     termina com "],". Não use aspas duplas dentro do texto.
+
+COMO ADICIONAR UM EVENTO
+  1. Em const EVENTOS, copie um evento inteiro (da chave { até a chave },).
+  2. Troque id (palavra única, sem espaços), nome, ic (emoji), txt, ok, no
+     e as perguntas em qs (mesmo formato de Q).
+  3. Para só acrescentar uma pergunta a um evento que já existe, cole a
+     linha dentro da lista qs dele.
+
+COMO ADICIONAR UMA CARTA
+  1. Em const CARTAS, copie uma linha e troque bom (1 sorte, 0 revés), ic,
+     nome, txt e fx.
+  2. fx aceita casa (2 avança, -1 volta), pop, pol, leg, mes, vida e
+     extra:1 (pergunta jurídica extra).
+
+COMO ADICIONAR OU MUDAR UMA ETAPA
+  1. Em const ETAPAS, acrescente um objeto com id, nome, ic, local, intro,
+     ok e no.
+  2. Crie em const Q uma lista com a MESMA chave do id, com pelo menos seis
+     perguntas.
+  3. Em const CASAS, acrescente as casas da etapa (e = posição da etapa em
+     ETAPAS, contando a partir de 0). O desenho do tabuleiro em tela larga
+     foi pensado para três casas por etapa.
+  4. Em const FOTOS, acrescente a chave com o mesmo id (pode ficar vazia).
+
+COMO ADICIONAR FOTOS DE CENÁRIO
+  1. Converta a foto (JPG ou PNG, de preferência com menos de 200 KB) para
+     "data URI" em qualquer conversor de imagem para base64.
+  2. Cole o texto, que começa com data:image/, entre as aspas da etapa em
+     const FOTOS. A camada escura é aplicada automaticamente.
+
+COMO MUDAR OS CARGOS
+  Em const CARGOS, cada item é [XP mínimo, nome masculino, nome feminino].
+  Mantenha os valores de XP em ordem crescente.
+
+DEPOIS DE QUALQUER MUDANÇA
+  Abra o jogo e jogue até a parte alterada. Tela em branco indica erro de
+  pontuação (vírgula, aspas ou colchete): desfaça a mudança e confira.
+========================================================================
+*/
+
+/*
+========================================================================
+DOCUMENTAÇÃO DAS REGRAS PEDAGÓGICAS
+========================================================================
+Cada indicador do painel do jogo representa uma condição real para que um
+projeto de lei avance.
+
+LEGALIDADE (0 a 100, começa em 50)
+  O projeto precisa respeitar a Constituição, as leis e o Regimento. Sobe
+  com acertos, sobretudo nas etapas jurídicas (Procuradoria e Constituição
+  e Legalidade). Se chegar a zero, o projeto é arquivado, como acontece
+  quando a CCL conclui pela inconstitucionalidade (RI, art. 170, § 1º).
+
+APOIO POPULAR (0 a 100, começa em 50)
+  Representa a opinião da população e da imprensa. Muda com os eventos de
+  imprensa e audiência pública, com algumas cartas e na etapa Prefeitura.
+  Se zerar, os colegas recuam: ele volta a 15 e o apoio político perde 15.
+
+APOIO POLÍTICO (0 a 100, começa em 50)
+  Representa os votos dos colegas nas comissões e no Plenário (RI, art. 168;
+  LOM, arts. 41 e 43). Se chegar a zero, o projeto é rejeitado.
+
+XP (pontos de experiência)
+  Mede o domínio do conteúdo. Cada acerto vale 10 XP (15 nos eventos),
+  multiplicados pela sequência de acertos (x1 a x5). O XP define o cargo,
+  de Vereador(a) Iniciante a Mestre(a) do Processo Legislativo.
+
+MANDATO (48 meses)
+  A legislatura dura quatro anos (LOM, art. 6º, § 1º). Cada pergunta
+  consome 2 meses; pedido de vista, recesso e falta de quórum consomem
+  mais. Se o tempo acabar antes da sanção, a partida termina.
+
+CONSULTAS À PROCURADORIA (3 por partida)
+  Representam o assessoramento técnico-jurídico da Procuradoria da Câmara
+  (LOM, art. 59): eliminam duas alternativas erradas, ao custo de 1 mês de
+  mandato. Ensinam que a consulta jurídica ajuda, mas também leva tempo.
+
+VIDAS (5)
+  A margem de erro do gabinete. Cada erro em casa de pergunta custa uma
+  vida; sem vidas, a partida termina.
+========================================================================
+*/
+
+/*
+========================================================================
+const FOTOS (fotos de cenário)
+========================================================================
+Finalidade: guardar uma foto de fundo para cada etapa.
+Estrutura: objeto { chave: texto }. A chave é o id da etapa (o mesmo usado
+em ETAPAS) e o valor é a imagem em data URI.
+Valores aceitos: texto vazio '' (usa o cenário desenhado) ou uma imagem que
+comece com 'data:image/'.
+Como interage: a função cena() do MOTOR lê FOTOS[id da etapa] e, se houver
+imagem, aplica-a como fundo com uma camada escura de 74%.
+A chave sancao está reservada para uso futuro e hoje não é exibida.
+========================================================================
+*/
 /* Fotos de cenário (opcional): cole aqui uma imagem em data:URI para cada etapa.
    Vazio = cenário desenhado. A camada escura é aplicada automaticamente.            */
 const FOTOS={protocolo:'',procuradoria:'',ccl:'',tematicas:'',financas:'',plenario:'',prefeitura:'',sancao:''};
 
+/*
+========================================================================
+const ETAPAS (as 7 etapas da tramitação)
+========================================================================
+Finalidade: descrever cada etapa do tabuleiro, na ordem da tramitação.
+Estrutura: lista de objetos. A posição na lista (0 a 6) é o número da etapa
+usado no campo e de CASAS.
+Campos:
+  id     palavra única, sem espaços e sem acento. Liga a etapa às suas
+         perguntas em Q e à sua foto em FOTOS.
+  nome   título exibido na faixa da cena e no tabuleiro.
+  ic     emoji usado como ícone da etapa.
+  local  nome do cenário, exibido acima do título.
+  intro  texto do mascote ao chegar à etapa; ensina o que acontece ali.
+  ok     efeitos de cada acerto nas perguntas da etapa.
+  no     efeitos de cada erro (além da perda de uma vida).
+Valores aceitos em ok e no (todos opcionais, números inteiros):
+  leg = legalidade, pop = apoio popular, pol = apoio político (pontos de 0
+  a 100); mes = meses de mandato. Número positivo soma; negativo subtrai.
+========================================================================
+*/
 /* As 7 etapas do tabuleiro, na ordem da tramitação.
    id = chave usada em Q e FOTOS · nome = título · ic = ícone · local = cenário
    intro = texto do mascote ao chegar · ok / no = efeitos de acerto / erro nas perguntas da etapa
@@ -1215,6 +1490,21 @@ const ETAPAS=[
  ok:{pop:8,pol:5},no:{pop:-12,pol:-8}}
 ];
 
+/*
+========================================================================
+const CASAS (as 21 casas do tabuleiro)
+========================================================================
+Finalidade: definir o percurso, casa a casa, do Protocolo até a última casa
+antes da Sanção.
+Estrutura: lista de objetos, na ordem do percurso. A Sanção não está na
+lista: ela é a posição seguinte à última casa (no MOTOR, FIM = CASAS.length).
+Campos:
+  e   número da etapa em ETAPAS (0 = Protocolo ... 6 = Prefeitura).
+  t   tipo da casa: 'q' = pergunta da etapa; 'ev' = evento sorteado, com
+      pergunta; 'ct' = carta de sorte ou revés.
+  n   nome da casa, exibido na faixa da cena ("Casa 4 de 21 · ...").
+========================================================================
+*/
 /* Casas do tabuleiro: e = etapa, t = 'q' pergunta | 'ev' evento | 'ct' carta */
 const CASAS=[
 {e:0,t:'q',n:'Protocolo do projeto'},{e:0,t:'q',n:'Leitura no expediente'},{e:0,t:'ct',n:'Despacho do Presidente'},
@@ -1226,6 +1516,28 @@ const CASAS=[
 {e:6,t:'q',n:'Autógrafo'},{e:6,t:'ct',n:'Protocolo da Prefeitura'},{e:6,t:'q',n:'Decisão do Prefeito'}
 ];
 
+/*
+========================================================================
+const Q (banco de perguntas das etapas)
+========================================================================
+Finalidade: guardar as perguntas fixas de cada etapa.
+Estrutura: objeto em que cada chave é o id de uma etapa e o valor é uma
+lista de perguntas. Cada pergunta é uma lista de 7 textos, nesta ordem:
+  posição 0  enunciado
+  posição 1  resposta CERTA
+  posição 2  errada
+  posição 3  errada
+  posição 4  errada
+  posição 5  explicação mostrada depois da resposta
+  posição 6  fonte legal (artigo do RI ou da LOM)
+Como interage: novaPergunta() sorteia uma pergunta ainda não usada da etapa
+atual e embaralha a ordem das alternativas; responder() considera certa a
+alternativa da posição 1; vPalco() exibe a pergunta, e vFim() lista as
+erradas.
+Recomendação: manter pelo menos seis perguntas por etapa, porque quem erra
+recebe outra pergunta da mesma etapa.
+========================================================================
+*/
 /* Banco de perguntas, uma lista por etapa (a chave é o id da etapa).
    Para acrescentar: copie uma linha inteira, cole logo abaixo de "protocolo:[" (ou da etapa
    desejada) e troque os textos. A resposta CERTA é sempre o 2º texto; o jogo embaralha. */
@@ -1321,6 +1633,24 @@ prefeitura:[
 ["A Câmara rejeitou o veto. Em quanto tempo o Prefeito deve promulgar a lei?","48 horas","15 dias úteis","30 dias","90 dias","O Prefeito promulga em 48 horas. Se não o fizer, o Presidente da Câmara promulga em igual prazo.","LOM, art. 51, § 5º"]
 ]};
 
+/*
+========================================================================
+const EVENTOS (imprevistos sorteados)
+========================================================================
+Finalidade: simular situações da vida parlamentar (oposição, imprensa,
+audiência pública, pedido de vista, emenda etc.). Três casas do tabuleiro
+sorteiam um evento ainda não usado na partida.
+Campos:
+  id    palavra única, sem espaços.
+  nome  título exibido na faixa amarela do evento.
+  ic    emoji do evento.
+  txt   situação narrada ao jogador.
+  ok    efeitos do acerto (mesmos campos de ETAPAS).
+  no    efeitos do erro. Erro em evento NÃO tira vida; casa:-1 faz voltar
+        uma casa.
+  qs    perguntas do evento, no mesmo formato de Q; uma é sorteada por vez.
+========================================================================
+*/
 /* Eventos sorteados: cada um traz uma pergunta. ok/no = efeitos de acerto e erro */
 const EVENTOS=[
 {id:'oposicao',nome:'Oposição',ic:'🙋',txt:'Um vereador da oposição pede a palavra e questiona o seu projeto.',ok:{pol:12},no:{pol:-14},qs:[
@@ -1353,6 +1683,24 @@ const EVENTOS=[
 ["A emenda acrescenta um artigo novo ao seu projeto. Que tipo de emenda é essa?","Aditiva","Supressiva","Modificativa","Prejudicada","A emenda aditiva acrescenta parte a uma proposição.","RI, art. 148, III"]]}
 ];
 
+/*
+========================================================================
+const CARTAS (cartas de sorte ou revés)
+========================================================================
+Finalidade: trazer efeitos imediatos, sem pergunta, que simulam a sorte e
+os imprevistos da tramitação. Quatro casas sorteiam uma carta ainda não
+usada na partida.
+Campos:
+  bom   1 = carta de sorte (sombra verde); 0 = carta de revés (laranja).
+  ic    emoji da carta.
+  nome  título da carta.
+  txt   texto exibido na carta.
+  fx    efeitos: leg, pop, pol, mes e vida (números); casa:2 avança duas
+        casas, sem pular a última pergunta antes da Sanção; casa:-1 volta
+        uma casa; extra:1 abre uma pergunta jurídica extra (sorteada das
+        listas procuradoria ou ccl) que vale +8 ou -20 de legalidade.
+========================================================================
+*/
 /* Cartas de Sorte ou Revés. fx = efeitos; extra = responde pergunta jurídica extra */
 const CARTAS=[
 {bom:1,ic:'✅',nome:'Parecer favorável',txt:'O relator elogiou seu projeto. Avance 2 casas.',fx:{casa:2}},
@@ -1367,14 +1715,47 @@ const CARTAS=[
 {bom:0,ic:'🪑',nome:'Falta de quórum',txt:'Sem quórum, a reunião foi encerrada (RI, art. 172, § 2º).',fx:{mes:-1,pol:-6}}
 ];
 
+/*
+========================================================================
+const CARGOS (progressão por XP)
+========================================================================
+Finalidade: dar ao jogador a sensação de progresso durante a partida.
+Estrutura: lista de [XP mínimo, nome no masculino, nome no feminino], em
+ordem crescente de XP. O cargo exibido é o último cujo XP mínimo já foi
+alcançado; o nome segue a escolha Vereadora/Vereador feita no menu.
+Como interage: cargo() calcula o índice do cargo; aplicar() avisa quando o
+jogador sobe; hud() e vFim() exibem o nome.
+========================================================================
+*/
 /* Cargos por XP da partida: [XP mínimo, nome no masculino, nome no feminino] */
 const CARGOS=[[0,'Vereador Iniciante','Vereadora Iniciante'],[50,'Vereador Experiente','Vereadora Experiente'],[150,'Presidente de Comissão','Presidente de Comissão'],[300,'Líder de Bancada','Líder de Bancada'],[500,'Presidente da Câmara','Presidente da Câmara'],[750,'Mestre do Processo Legislativo','Mestra do Processo Legislativo']];
 
+/*
+========================================================================
+const REGRAS (números gerais do jogo)
+========================================================================
+Finalidade: concentrar em um só lugar os números que definem a dificuldade.
+Campos:
+  vidas          vidas no início (e máximo possível).
+  meses          meses de mandato no início.
+  custoPergunta  meses gastos a cada resposta.
+  leg, pop, pol  valor inicial das barras (0 a 100).
+  consultas      consultas à Procuradoria por partida.
+  custoConsulta  meses gastos a cada consulta.
+  xpPergunta     XP base de um acerto em casa de pergunta.
+  xpEvento       XP base de um acerto em evento.
+Como interage: iniciar() cria a partida com esses valores; responder(),
+consultar(), aplicar() e hud() também os consultam.
+========================================================================
+*/
 /* Regras gerais: vidas iniciais, meses de mandato, meses gastos por pergunta, valores iniciais
    das barras (leg, pop, pol), consultas à Procuradoria, meses gastos por consulta e XP por acerto */
 const REGRAS={vidas:5,meses:48,custoPergunta:2,leg:50,pop:50,pol:50,consultas:3,custoConsulta:1,xpPergunta:10,xpEvento:15};
 
 /* Sugestões de projeto para quem não quiser digitar */
+// O que faz: lista os projetos de exemplo mostrados como botões no menu.
+// Por que existe: quem não quer digitar pode começar com um toque.
+// Como interage: vMenu() cria um botão para cada texto; a ação exemplo() de ACT copia o texto escolhido para o campo do projeto.
 const EXEMPLOS=['Institui a Semana Municipal da Leitura nas escolas','Cria o programa Praça Viva de cuidado com as praças','Institui o Dia Municipal do Skate'];
     </script>
 
@@ -1389,17 +1770,25 @@ const EXEMPLOS=['Institui a Semana Municipal da Leitura nas escolas','Cria o pro
 
 /* ---------- utilitários ---------- */
 // Atalho para encontrar um elemento da página; app = a área onde o jogo é desenhado.
+// Como funciona: $("#app") devolve o elemento da página com id "app".
+// Por que existe: evita repetir document.querySelector em todo o código.
 const $ = s => document.querySelector(s),
   app = $('#app');
 // Troca & < > " ' por códigos seguros: texto digitado ou do banco de perguntas nunca vira código.
+// Como funciona: substitui cada caractere especial pelo seu código de HTML (por exemplo, < vira &lt;).
+// Por que existe: segurança. Usado por vMenu(), hud(), vPalco() e vFim() ao exibir nome, projeto e perguntas.
 const esc = s =>
   String(s).replace(
     /[&<>"']/g,
     c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c],
   );
 // Sorteia um número inteiro de 0 a n − 1.
+// Como funciona: Math.random() dá um número entre 0 e 1; multiplicado e arredondado para baixo, vira um inteiro.
+// Por que existe: base de todos os sorteios (perguntas, eventos, cartas, número do projeto).
 const rnd = n => Math.floor(Math.random() * n);
 // Devolve uma cópia embaralhada da lista (usada nas alternativas).
+// Como funciona: método de Fisher-Yates, que troca cada item com outro de posição sorteada.
+// Por que existe: impede que a resposta certa apareça sempre no mesmo lugar.
 const sh = a => {
   a = [...a];
   for (let i = a.length - 1; i > 0; i--) {
@@ -1408,26 +1797,87 @@ const sh = a => {
   }
   return a;
 };
+// O que faz: guarda o número de casas (21). Chegar a essa posição significa chegar à Sanção.
+// Por que existe: se casas forem acrescentadas em CASAS, a Sanção se ajusta sozinha.
 const FIM = CASAS.length; /* posição da Sanção */
 
 /* ---------- estado ---------- */
 // Caderneta do aparelho: recorde, leis aprovadas e último nome. Lida do navegador ao abrir a página.
+// Como funciona: começa com valores padrão e, se o navegador tiver dados salvos na chave "jv1", eles são copiados por cima.
+// Por que existe: lembra o recorde e o nome entre uma visita e outra, sem enviar nada para fora do aparelho.
+// Como interage: iniciar() grava o nome e o tratamento; vitoria() soma uma lei; fimDeJogo() atualiza o recorde; vMenu() exibe o recorde.
 let P = { best: 0, leis: 0, nome: '', trat: 'a' };
 try {
   Object.assign(P, JSON.parse(localStorage.getItem('jv1') || '{}'));
 } catch (e) {}
 // Grava a caderneta no navegador. Se o navegador não permitir, o jogo segue sem gravar.
+// Como funciona: transforma P em texto (JSON) e grava no localStorage do navegador.
+// Por que existe: o try/catch evita erro em janela anônima ou com o armazenamento bloqueado.
 const save = () => {
   try {
     localStorage.setItem('jv1', JSON.stringify(P));
   } catch (e) {}
 };
+/*
+========================================================================
+ESTADO GLOBAL (G): a "comanda" da partida
+========================================================================
+O que faz: guarda tudo o que o jogo precisa lembrar naquele momento.
+Por que existe: com um único lugar para o estado, a tela é sempre um
+retrato fiel da partida. Toda ação muda G e, em seguida, render() redesenha
+a tela a partir dele.
+Como funciona: aqui G nasce só com os dados do menu. Ao começar a partida,
+iniciar() o substitui por uma comanda completa; ao voltar ao menu, a ação
+sair() o recria.
+
+Propriedades:
+  tela        qual tela mostrar: 'menu', 'jogo' ou 'fim'.
+  fase        dentro do jogo: 'etapa' (apresentação), 'q' (pergunta
+              aberta), 'resp' (resposta comentada) ou 'carta'.
+  trat        'a' = Vereadora; 'o' = Vereador.
+  nome        nome digitado pelo jogador.
+  proj        título do projeto de lei digitado.
+  err         mensagem de erro do formulário do menu.
+  num         número fictício do projeto de lei (1 a 300).
+  ano         ano atual, exibido junto ao número do projeto.
+  pos         casa atual (0 = primeira casa; 21 = Sanção).
+  vidas       vidas restantes (0 a 5).
+  mes         meses de mandato restantes.
+  leg         legalidade (0 a 100).
+  pop         apoio popular (0 a 100).
+  pol         apoio político (0 a 100).
+  xp          pontos de experiência acumulados.
+  cb          acertos seguidos; define o multiplicador mul().
+  cons        consultas à Procuradoria restantes.
+  vistos      perguntas já sorteadas, por lista (exemplo: protocolo: [0, 3]).
+  feitos      casas especiais (evento ou carta) já resolvidas.
+  evUsados    eventos já sorteados nesta partida.
+  ctUsadas    cartas já sorteadas nesta partida.
+  etapaVista  última etapa cuja apresentação já foi mostrada.
+  acertos     total de acertos na partida.
+  erros       perguntas erradas [enunciado, certa, fonte], para revisão.
+  subiu       índice do novo cargo após uma resposta, ou -1 (não subiu).
+  aviso       aviso extra exibido junto aos efeitos (apoio popular zerado).
+  sair        true enquanto o aviso "Sair da partida?" está aberto.
+Criadas durante o jogo:
+  q           pergunta atual: origem (src), lista (pool) ou evento (ev),
+              posição na lista (k) e ordem embaralhada das alternativas (ops).
+  hid         alternativas escondidas pela consulta à Procuradoria.
+  resp        última resposta: alternativa escolhida, acerto e efeitos.
+  mov         quantas casas andar ao continuar (-1, 0, 1 ou 2).
+  perdeu      motivo da derrota [título, texto], ou null.
+  carta       posição da carta sorteada em CARTAS.
+  win, motivo, bonus, novoRecorde   dados usados na tela final.
+========================================================================
+*/
 // Comanda da partida: TODO o estado do jogo mora aqui. Começa na tela do menu.
 let G = { tela: 'menu', trat: P.trat == 'o' ? 'o' : 'a', nome: P.nome || '', proj: '', err: '' };
 
 
 /* ---------- utilitários de tela ---------- */
 // Bipe curto gerado pelo próprio navegador (f = frequência em Hz, d = duração em segundos).
+// Como funciona: cria um oscilador de som (onda quadrada) por uma fração de segundo; AC guarda o gerador de áudio para reutilizá-lo.
+// Por que existe: reforço sonoro de acerto (agudo) e erro (grave), sem arquivos de som.
 let AC;
 const beep = (f, d = 0.1) => {
   try {
@@ -1444,13 +1894,19 @@ const beep = (f, d = 0.1) => {
   } catch (e) {}
 };
 // Imagem do mascote (m = humor: n normal, h feliz, s triste; s = altura base).
+// Como funciona: devolve o HTML de uma imagem com a classe da animação correspondente ao humor.
+// Como interage: usada por msb(); a imagem MIMG vem do último bloco <script>.
 const MAS = (m = 'n', s = 70) =>
   `<img class="mc x${m}" src="${MIMG}" alt="" style="height:${Math.round(s * 1.35)}px">`;
 // Mascote com balão de fala (t = texto do balão).
+// Por que existe: o mascote é o narrador do jogo; aparece no menu, nas etapas, nas respostas e na tela final.
 const msb = (t, m = 'n') => `<div class="ms">${MAS(m)}<div class="bb">${t}</div></div>`;
 // "Vereadora" ou "Vereador", conforme a escolha do menu.
+// Como interage: usada no painel, no certificado e na tela final.
 const tit = () => (G.trat == 'a' ? 'Vereadora' : 'Vereador');
 // Índice do cargo atual em CARGOS, pelo XP acumulado.
+// Como funciona: percorre CARGOS e guarda o último degrau cujo XP mínimo já foi alcançado.
+// Como interage: aplicar() compara o cargo antes e depois para avisar a subida.
 const cargo = (xp = G.xp) => {
   let i = 0;
   CARGOS.forEach((r, k) => {
@@ -1461,19 +1917,26 @@ const cargo = (xp = G.xp) => {
 // Nome do cargo no masculino ou no feminino.
 const nomeCargo = i => CARGOS[i][G.trat == 'a' ? 2 : 1];
 // Multiplicador de acertos seguidos: x1 a x5, sobe a cada 3 acertos.
+// Como funciona: divide os acertos seguidos (G.cb) por 3, arredonda para baixo, limita a 4 e soma 1.
+// Exemplos: 2 acertos → x1; 3 → x2; 6 → x3; 12 ou mais → x5. Um erro zera G.cb.
 const mul = () => 1 + Math.min(4, Math.floor(G.cb / 3));
 // Casa atual do tabuleiro.
+// Como funciona: Math.min impede ler além da última casa quando o peão está na Sanção.
 const casa = () => CASAS[Math.min(G.pos, FIM - 1)];
 // Etapa da casa atual.
 const etapa = () => ETAPAS[casa().e];
 
 /* ---------- pergunta atual ---------- */
 // Pergunta que está na tela agora.
+// Como funciona: lê G.q (origem, lista e posição) e busca a pergunta em Q ou em EVENTOS.
+// Como interage: usada por responder() e vPalco().
 function cur() {
   const q = G.q;
   return q.src == 'evento' ? EVENTOS[q.ev].qs[q.k] : Q[q.pool][q.k];
 }
 // Sorteia um índice ainda não usado da lista; quando todos saíram, recomeça.
+// Por que existe: evita que a mesma pergunta se repita na partida antes de a lista acabar.
+// Como interage: guarda os índices usados em G.vistos[chave].
 function sorteia(chave, total) {
   // v = índices já sorteados desta lista
   const v = G.vistos[chave] || (G.vistos[chave] = []);
@@ -1485,6 +1948,26 @@ function sorteia(chave, total) {
   v.push(k);
   return k;
 }
+/*
+========================================================================
+novaPergunta(): preparação da pergunta
+========================================================================
+Quando é chamada: por desafio() (pergunta da etapa ou de evento) e por
+continuar() (pergunta extra da carta Questionamento jurídico).
+Fluxo:
+  Origem da pergunta
+  ↓
+  Etapa → lista da etapa em Q
+  Extra → lista procuradoria ou ccl (sorteio entre as duas)
+  Evento → lista qs do evento
+  ↓
+  sorteia() uma pergunta ainda não usada daquela lista
+  ↓
+  Embaralha a ordem das alternativas e limpa ajuda e resposta anteriores
+  ↓
+  fase 'q': pergunta aberta na tela
+========================================================================
+*/
 // Prepara a próxima pergunta (da etapa, de um evento ou extra) e embaralha as alternativas.
 function novaPergunta(src, extra) {
   // de onde vem a pergunta: da etapa atual, das etapas jurídicas (carta extra) ou de um evento
@@ -1507,7 +1990,25 @@ function novaPergunta(src, extra) {
 
 /* ---------- efeitos ---------- */
 // Mantém um valor entre 0 e 100.
+// Por que existe: legalidade e apoios são medidos de 0 a 100.
 const lim = v => Math.max(0, Math.min(100, v));
+/*
+========================================================================
+aplicar(): aplicação dos efeitos
+========================================================================
+Quando é chamada: por responder() e por desafio() (cartas).
+O que faz: lança na comanda G cada item da ficha de efeitos fx.
+Fluxo:
+  Ficha de efeitos (exemplo: xp 20, leg 12, mes -2)
+  ↓
+  Soma cada item: XP; barras limitadas entre 0 e 100; meses nunca abaixo
+  de 0; vidas entre 0 e o máximo de REGRAS
+  ↓
+  Apoio popular zerou? → sim → volta a 15 e o apoio político perde 15
+  ↓
+  Subiu de cargo? → guarda o novo cargo em G.subiu para o aviso na tela
+========================================================================
+*/
 // Lança na comanda os efeitos de uma resposta ou carta (fx = { xp, leg, pop, pol, mes, vida }).
 function aplicar(fx) {
   // guarda o cargo atual para saber, no fim, se o jogador subiu
@@ -1529,6 +2030,25 @@ function aplicar(fx) {
   // -1 = não subiu; senão, guarda o índice do novo cargo para o aviso na tela
   G.subiu = cargo() > antes ? cargo() : -1;
 }
+/*
+========================================================================
+derrota(): verificação de derrota
+========================================================================
+Quando é chamada: depois de cada resposta e de cada carta.
+Fluxo:
+  Vidas = 0?           → SEM VIDAS
+  ↓ não
+  Legalidade = 0?      → PROJETO ARQUIVADO (RI, art. 170, § 1º)
+  ↓ não
+  Apoio político = 0?  → PROJETO REJEITADO
+  ↓ não
+  Mandato = 0?         → FIM DO MANDATO (LOM, art. 6º, § 1º)
+  ↓ não
+  null: o jogo continua
+O resultado fica em G.perdeu; continuar() leva à tela final quando houver
+derrota.
+========================================================================
+*/
 // Verifica as quatro condições de derrota. Devolve [título, texto] ou null (jogo segue).
 function derrota() {
   // testa nesta ordem: vidas, legalidade, apoio político e mandato
@@ -1557,6 +2077,8 @@ function derrota() {
   return null;
 }
 // Etiquetas coloridas com os efeitos da resposta (+XP, −vida, ±barras, casas).
+// Quando aparece: depois de cada resposta e em cada carta.
+// Por que existe: mostra ao jogador a consequência de cada decisão, que é o centro do aprendizado.
 function chips(fx, mov) {
   // o = etiquetas; s = número com sinal (+3, −2); c = classe verde (up) ou laranja (dn)
   const o = [],
@@ -1577,7 +2099,53 @@ function chips(fx, mov) {
   return `<div class="fx">${o.join('')}</div>` + (G.aviso ? `<p class="sub">${G.aviso}</p>` : '');
 }
 
+/*
+========================================================================
+DOCUMENTAÇÃO DE FLUXO: visão geral das funções principais
+========================================================================
+Ordem em que as funções se chamam durante uma partida:
+
+  iniciar()           o jogador clica em PROTOCOLAR O PROJETO
+     ↓
+  entrar()            chega a uma casa
+     ↓
+  desafio()           decide o que a casa traz
+     ↓
+  novaPergunta()      (pergunta ou evento)      ou      carta aplicada
+     ↓                                                    ↓
+  responder()         corrige e aplica efeitos            ↓
+     ↓                                                    ↓
+  continuar()  ←──────────────────────────────────────────┘
+     ↓
+  entrar()            próxima casa (o ciclo se repete)
+     ↓
+  vitoria()  ou  derrota()  →  fimDeJogo()  →  tela final
+
+aplicar() é chamada sempre que algo muda os indicadores; consultar() pode
+ser usada enquanto uma pergunta está aberta.
+========================================================================
+*/
 /* ---------- fluxo ---------- */
+/*
+========================================================================
+iniciar(): começo da partida
+========================================================================
+Quando é chamada: ao clicar em PROTOCOLAR O PROJETO, ao teclar Enter no
+campo do projeto ou ao escolher TENTAR DE NOVO depois de uma derrota.
+O que faz: confere o formulário, grava o nome no aparelho e cria a comanda.
+Fluxo:
+  Formulário do menu
+  ↓
+  Nome tem pelo menos 2 letras e projeto pelo menos 5?
+  ↓ não → mostra o aviso no menu e para
+  ↓ sim
+  Grava nome e tratamento na caderneta P
+  ↓
+  Cria a comanda G com os valores de REGRAS (5 vidas, 48 meses...)
+  ↓
+  entrar() na casa 0
+========================================================================
+*/
 // Valida o formulário do menu e cria uma comanda nova para a partida.
 function iniciar() {
   // tira espaços sobrando do nome e do projeto
@@ -1627,6 +2195,22 @@ function iniciar() {
   beep(520);
   entrar();
 }
+/*
+========================================================================
+entrar(): chegada a uma casa
+========================================================================
+Quando é chamada: no início da partida e depois de cada movimento do peão.
+Fluxo:
+  Posição atual
+  ↓
+  Passou da última casa? → sim → vitoria()
+  ↓ não
+  É a primeira casa de uma etapa nova? → sim → mostra a apresentação da
+  etapa (fase 'etapa'); o botão ENTRAR chama desafio()
+  ↓ não
+  desafio()
+========================================================================
+*/
 // Chega a uma casa: vitória (Sanção), apresentação da etapa nova ou desafio.
 function entrar() {
   // passou da última casa: chegou à Sanção
@@ -1638,6 +2222,24 @@ function entrar() {
   }
   desafio();
 }
+/*
+========================================================================
+desafio(): o que a casa traz
+========================================================================
+Quando é chamada: por entrar() ou pelo botão ENTRAR da apresentação.
+Fluxo:
+  Tipo da casa (campo t de CASAS)
+  ↓
+  Evento ou carta já resolvidos? → sim → pula para a casa seguinte
+  ↓ não
+  'q'  → novaPergunta('etapa')
+  'ev' → sorteia um evento não usado → novaPergunta('evento')
+  'ct' → sorteia uma carta não usada → aplicar() os efeitos
+         → calcula o movimento → derrota()? → mostra a carta
+  ↓
+  render()
+========================================================================
+*/
 // Resolve a casa atual: pergunta da etapa, evento sorteado ou carta sorteada.
 function desafio() {
   const c = casa();
@@ -1685,6 +2287,34 @@ function desafio() {
   }
   render();
 }
+/*
+========================================================================
+responder(): correção da resposta
+========================================================================
+Quando é chamada: ao clicar numa alternativa (ação resp de ACT).
+Fluxo:
+  Pergunta
+  ↓
+  Resposta (alternativa clicada)
+  ↓
+  Correção (certa = posição 1 da pergunta)
+  ↓
+  Monta a ficha de efeitos fx e o movimento mov:
+    pergunta da etapa: acerto → XP + efeitos ok da etapa, anda 1 casa;
+                       erro   → perde 1 vida + efeitos no, fica na casa
+    evento:            acerto → XP + efeitos ok; erro → efeitos no
+                       (pode voltar 1 casa), sem perder vida
+    extra:             acerto → XP e +8 de legalidade; erro → -20
+  ↓
+  Desconta os meses da resposta (REGRAS.custoPergunta)
+  ↓
+  Aplicação de Efeitos: aplicar(fx)
+  ↓
+  Verificação de Derrota: derrota() (exceto quando o acerto leva à Sanção)
+  ↓
+  Mostra a resposta comentada; o botão chama continuar() → Próxima Casa
+========================================================================
+*/
 // Corrige a resposta (a certa é sempre o índice 1), aplica os efeitos e verifica a derrota.
 function responder(i) {
   // só aceita resposta enquanto a pergunta está aberta
@@ -1740,6 +2370,21 @@ function responder(i) {
     setTimeout(() => app.classList.remove('shk'), 260);
   }
 }
+/*
+========================================================================
+continuar(): depois da resposta ou da carta
+========================================================================
+Quando é chamada: pelo botão abaixo da resposta comentada ou da carta.
+Fluxo:
+  Houve derrota? → sim → fimDeJogo(derrota)
+  ↓ não
+  Carta de questionamento jurídico? → sim → novaPergunta('extra')
+  ↓ não
+  Move o peão: posição + mov (nunca abaixo de 0)
+  ↓
+  entrar() na nova casa
+========================================================================
+*/
 // Depois da resposta ou da carta: encerra, abre a pergunta extra ou move o peão.
 function continuar() {
   // houve derrota: vai para a tela final
@@ -1753,6 +2398,24 @@ function continuar() {
   G.pos = Math.max(0, G.pos + G.mov);
   entrar();
 }
+/*
+========================================================================
+consultar(): ajuda da Procuradoria
+========================================================================
+Quando é chamada: pelo botão Consultar a Procuradoria, com uma pergunta
+aberta.
+Fluxo:
+  Pode consultar? (pergunta aberta, consultas restantes, ainda não usada
+  nesta pergunta e meses suficientes)
+  ↓ não → nada acontece (o botão já aparece desativado)
+  ↓ sim
+  Gasta 1 consulta e 1 mês
+  ↓
+  Esconde duas das três alternativas erradas, ao acaso
+  ↓
+  render()
+========================================================================
+*/
 // Ajuda da Procuradoria: esconde duas alternativas erradas e custa 1 mês.
 function consultar() {
   if (
@@ -1769,6 +2432,19 @@ function consultar() {
   beep(440);
   render();
 }
+/*
+========================================================================
+vitoria(): chegada à Sanção
+========================================================================
+Quando é chamada: por entrar(), quando o peão passa da última casa.
+Fluxo:
+  Calcula o bônus: 100 + 5 por mês restante + 20 por vida restante
+  ↓
+  Soma o bônus ao XP e uma lei à caderneta P
+  ↓
+  fimDeJogo(vitória)
+========================================================================
+*/
 // Bônus da sanção: 100 + 5 por mês restante + 20 por vida.
 function vitoria() {
   const bonus = 100 + G.mes * 5 + G.vidas * 20;
@@ -1777,6 +2453,21 @@ function vitoria() {
   P.leis = (P.leis || 0) + 1;
   fimDeJogo(true);
 }
+/*
+========================================================================
+fimDeJogo(): encerramento da partida
+========================================================================
+Quando é chamada: por vitoria() ou por continuar() (derrota).
+Fluxo:
+  Marca a tela 'fim' e guarda se foi vitória e o motivo da derrota
+  ↓
+  XP maior que o recorde? → sim → novo recorde na caderneta P
+  ↓
+  Grava a caderneta no navegador (save)
+  ↓
+  Toca o bipe final e desenha a tela final (render → vFim)
+========================================================================
+*/
 // Encerra a partida, atualiza o recorde e mostra a tela final.
 function fimDeJogo(win, motivo) {
   G.tela = 'fim';
@@ -1790,6 +2481,18 @@ function fimDeJogo(win, motivo) {
 }
 
 /* ---------- telas ---------- */
+/*
+========================================================================
+vMenu(): tela do menu inicial
+========================================================================
+Quando aparece: ao abrir o jogo e ao voltar ao menu (G.tela = 'menu').
+Papel: receber os dados do jogador e iniciar a partida.
+Informações exibidas: título do jogo, mascote com mensagem de boas-vindas,
+instruções "Como se joga", escolha Vereadora/Vereador, campos de nome e de
+projeto, exemplos de projeto, aviso de erro do formulário, botão
+PROTOCOLAR O PROJETO e recorde do aparelho.
+========================================================================
+*/
 // Tela do menu inicial: título, mascote, instruções e formulário do gabinete.
 function vMenu() {
   // O HTML das telas é montado como texto; cada ${...} insere um valor da comanda G.
@@ -1807,9 +2510,23 @@ ${msb('Você ganhou um mandato! Leve o seu projeto de lei do Protocolo até a sa
 }
 
 // Uma barra do painel (ic = ícone, v = valor de 0 a 100, txt = texto opcional no lugar do número).
+// Como interage: chamada quatro vezes por hud(), uma para cada barra; barras com 25 ou menos ficam em laranja.
 function med(ic, nome, v, k, txt) {
   return `<div class="md ${v <= 25 ? 'lo' : ''}"><span>${ic} ${nome}</span><b>${txt ?? Math.round(v)}</b><div class="bx ${k}"><i style="width:${v}%"></i></div></div>`;
 }
+/*
+========================================================================
+hud(): painel do mandato
+========================================================================
+Quando aparece: durante toda a partida, no topo da coluna esquerda (no
+celular, no topo da tela).
+Papel: mostrar a situação do jogador de relance.
+Informações exibidas: tratamento e nome, número e título do projeto, vidas
+(corações), cargo atual, barra de progresso até o próximo cargo, XP e
+multiplicador, e as barras de legalidade, apoio popular, apoio político e
+mandato. Barras com 25 ou menos ficam em laranja.
+========================================================================
+*/
 // Painel do mandato: nome, projeto, vidas, cargo, XP e as quatro barras.
 function hud() {
   const c = cargo(),
@@ -1819,6 +2536,18 @@ function hud() {
 <div class="hc"><span class="rb">${nomeCargo(c)}</span><div class="bx"><i style="width:${pc}%"></i></div><span class="xv">${G.xp} XP${mul() > 1 ? ` · x${mul()} 🔥` : ''}</span></div>
 <div class="ms4">${med('⚖️', 'Legalidade', G.leg, 'leg')}${med('📣', 'Apoio popular', G.pop, 'pop')}${med('🤝', 'Apoio político', G.pol, 'pol')}${med('⏳', 'Mandato', (G.mes / REGRAS.meses) * 100, 'mes', G.mes + (G.mes == 1 ? ' mês' : ' meses'))}</div></div>`;
 }
+/*
+========================================================================
+tab(): tabuleiro
+========================================================================
+Quando aparece: durante toda a partida, abaixo do painel.
+Papel: mostrar onde o projeto está na tramitação.
+Informações exibidas: as 7 etapas com suas casas (verde = concluída,
+amarela com o mascote = atual, ❗ = evento, 🃏 = carta, número = pergunta)
+e a casa final da Sanção. Em tela larga forma uma serpente; no celular,
+uma faixa de progresso.
+========================================================================
+*/
 // Tabuleiro: casas concluídas, casa atual (com o peão) e casas futuras.
 function tab() {
   const at = casa().e;
@@ -1837,6 +2566,16 @@ function tab() {
     `<div class="et fim ${G.pos >= FIM ? 'atual' : ''}"><div class="en"><b>🏛️</b><span>Sanção do Prefeito</span></div><div class="tr"><i class="cs sn ${G.pos >= FIM ? 'aqui' : ''}">SANÇÃO</i></div></div></div>`
   );
 }
+/*
+========================================================================
+cena(): faixa da etapa
+========================================================================
+Quando aparece: no topo da área central, em todas as fases do jogo.
+Papel: situar o jogador no cenário da etapa.
+Informações exibidas: número da etapa, local, nome da etapa, número e nome
+da casa e o ícone. Usa a foto de FOTOS como fundo, quando houver.
+========================================================================
+*/
 // Faixa escura com o nome da etapa e da casa (usa a foto de FOTOS, se houver).
 function cena(gr) {
   const et = etapa(),
@@ -1844,6 +2583,21 @@ function cena(gr) {
   return `<div class="cena ${gr ? 'gr' : ''}"${f ? ` style="background-image:linear-gradient(rgba(12,22,48,.74),rgba(12,22,48,.74)),url('${f}')"` : ''}><div><span class="ce">Etapa ${casa().e + 1} de ${ETAPAS.length} · 📍 ${et.local}</span><h2 class="t">${et.nome}</h2><span class="cc">Casa ${G.pos + 1} de ${FIM} · ${casa().n}</span></div><b class="ci">${et.ic}</b></div>`;
 }
 
+/*
+========================================================================
+vPalco(): centro da tela de jogo
+========================================================================
+Quando aparece: durante toda a partida, à direita do tabuleiro (no
+celular, abaixo dele).
+Papel: mostrar o desafio da vez, conforme G.fase:
+  'etapa'  apresentação da etapa pelo mascote e botão ENTRAR;
+  'carta'  carta de sorte ou revés com seus efeitos;
+  'q'      pergunta com quatro alternativas e botão de consulta;
+  'resp'   alternativas coloridas (verde = certa, laranja = escolhida
+           errada), explicação com a fonte, efeitos e botão de continuar.
+Nos eventos, mostra também a faixa amarela com a situação narrada.
+========================================================================
+*/
 // Centro da tela de jogo, conforme a fase: apresentação, pergunta, resposta ou carta.
 function vPalco() {
   // fase 'etapa': apresentação da etapa
@@ -1888,6 +2642,16 @@ function vPalco() {
       : `<button class="lf" data-a="consultar" ${G.cons > 0 && !G.hid.length && G.mes > REGRAS.custoPergunta + REGRAS.custoConsulta ? '' : 'disabled'}>💡 Consultar a Procuradoria (${G.cons}) · custa 1 mês</button>`)
   );
 }
+/*
+========================================================================
+vJogo(): tela de jogo
+========================================================================
+Quando aparece: do início ao fim da partida (G.tela = 'jogo').
+Papel: montar a tela de jogo juntando hud(), tab() e vPalco().
+Informações exibidas: as das três partes e, quando o botão MENU é clicado,
+o aviso "Sair da partida?".
+========================================================================
+*/
 // Tela de jogo completa: painel e tabuleiro à esquerda, palco à direita, aviso de saída.
 function vJogo() {
   return (
@@ -1898,6 +2662,19 @@ function vJogo() {
   );
 }
 
+/*
+========================================================================
+vFim(): tela final
+========================================================================
+Quando aparece: quando a partida termina (G.tela = 'fim').
+Papel: mostrar o resultado e reforçar o aprendizado.
+Informações exibidas: na vitória, "SANÇÃO!", a mensagem de parabéns e o
+certificado da lei com o projeto e o autor; na derrota, o motivo e o
+projeto. Nos dois casos: cargo alcançado, XP, acertos, meses restantes,
+casa alcançada, botões para jogar de novo ou voltar ao menu e a lista
+"Para rever" com as perguntas erradas, a resposta certa e a fonte.
+========================================================================
+*/
 // Tela final: certificado da lei ou motivo da derrota, números da partida e erros para rever.
 function vFim() {
   const total = G.acertos + G.erros.length;
@@ -1916,6 +2693,19 @@ function vFim() {
 <div><span class="rb" style="align-self:flex-start">${nomeCargo(cargo())}</span>${res}${bt}${rev}</div></div>`;
 }
 
+/*
+========================================================================
+render(): desenho da tela
+========================================================================
+Quando é chamada: depois de qualquer ação que mude a comanda G, e uma vez
+quando a página termina de carregar.
+Papel: escolher a tela certa e redesenhá-la por inteiro.
+Como funciona: conforme G.tela, usa vMenu(), vJogo() ou vFim() e coloca o
+resultado dentro da área #app. No menu, esconde o botão MENU do cabeçalho.
+Por que existe: redesenhar tudo a partir de G garante que a tela nunca
+mostre informação desatualizada.
+========================================================================
+*/
 // Redesenha a tela inteira a partir da comanda G. É chamada depois de cada ação.
 function render() {
   document.body.classList.toggle('home', G.tela == 'menu'); // no menu, esconde o botão MENU
@@ -1924,6 +2714,8 @@ function render() {
 
 /* ---------- ações ---------- */
 // Ações dos botões. Cada botão indica a sua no atributo data-a (e o parâmetro em data-v).
+// Como funciona: cada botão do HTML tem data-a="nome da ação"; o porteiro de cliques, logo abaixo, chama ACT[nome].
+// Por que existe: um único lugar reúne tudo o que os botões fazem, o que facilita encontrar e mudar ações.
 const ACT = {
   trat(v) { // escolhe Vereadora (a) ou Vereador (o)
     G.trat = v;
@@ -1966,6 +2758,7 @@ const ACT = {
   },
 };
 // Porteiro: um único ouvinte para todos os cliques; chama ACT[data-a](data-v).
+// Por que existe: como a tela é redesenhada a cada passo, os botões são recriados; um ouvinte único na página continua funcionando.
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-a]');
   if (!b || b.disabled) return; // clique fora de um botão ou em botão desativado
@@ -1981,6 +2774,7 @@ app.addEventListener('submit', e => {
   e.preventDefault();
   iniciar();
 });
+// O que faz: Enter no campo do projeto inicia a partida em vez de pular linha.
 app.addEventListener('keydown', e => {
   if (e.target.id == 'proj' && e.key == 'Enter') {
     e.preventDefault();
@@ -1991,6 +2785,7 @@ app.addEventListener('keydown', e => {
 /* ---------- inicialização ---------- */
 // Desenha a primeira tela quando a página termina de carregar
 // (as imagens ficam no último bloco <script>, no fim do arquivo).
+// Por que existe: espera o navegador ler o arquivo inteiro, inclusive o bloco de imagens no fim, antes de desenhar.
 window.addEventListener('DOMContentLoaded', render);
     </script>
 
